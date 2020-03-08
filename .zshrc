@@ -122,6 +122,9 @@ export GOENV_DISABLE_GOPATH=1
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
+# For Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # For SBT
 eval "$(sbtenv init -)"
 
