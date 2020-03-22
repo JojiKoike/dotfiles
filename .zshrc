@@ -109,8 +109,8 @@ do
     export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
 done
 # for npm packages
-CURRENT_NODE_VERSION=`cat $HOME/.anyenv/envs/ndenv/version`
-export PATH="$HOME/.anyenv/envs/ndenv/versions/$CURRENT_NODE_VERSION/bin:$PATH"
+#CURRENT_NODE_VERSION=`cat $HOME/.anyenv/envs/ndenv/version`
+#export PATH="$HOME/.anyenv/envs/ndenv/versions/$CURRENT_NODE_VERSION/bin:$PATH"
 
 # For Python
 eval "$(pyenv virtualenv-init -)"
