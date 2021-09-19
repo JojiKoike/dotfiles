@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/sbin:$PATH"
 
-# For Git, Vim
+#For Git, Vim
 export PATH="/usr/local/bin:$PATH"
 
 # For Anyenv
@@ -108,6 +108,7 @@ for D in `ls $HOME/.anyenv/envs`
 do
     export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
 done
+
 # for npm packages
 #CURRENT_NODE_VERSION=`cat $HOME/.anyenv/envs/ndenv/version`
 #export PATH="$HOME/.anyenv/envs/ndenv/versions/$CURRENT_NODE_VERSION/bin:$PATH"
@@ -128,6 +129,17 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # For SBT
 eval "$(sbtenv init -)"
 
+# For PHP
+export PATH="/usr/local/opt/krb5/bin:$PATH"
+export PATH="/usr/local/opt/krb5/sbin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/krb5/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PATH="/usr/local/opt/bzip2/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/libedit/lib/pkgconfig:$PKG_CONFIG_PATH"
+
 # Composer
 PATH=$PATH:~/.composer/vendor/bin
 
@@ -147,6 +159,9 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
 
+# For GitHub CLI
+eval "$(gh completion -s zsh)"
+
 # For Apache Spark
 export SPARK_HOME=$HOME/tools/spark-2.4.4-bin-hadoop2.7
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
@@ -160,3 +175,5 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
+export PATH="/usr/local/opt/bison@2.7/bin:$PATH"
+
