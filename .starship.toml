@@ -1,10 +1,20 @@
 [aws]
-disabled = true
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = "bold blue"
+symbol = "🅰 "
+[aws.region_aliases]
+ap-northeast-1 = "tokyo"
+ap-northeast-2 = "osaka"
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
 
 [character]
-format = "❯❯ "
-success_symbol = "❯❯(bold green) "
-error_symbol = "❯❯(bold red) "
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+vicmd_symbol = "[V](bold green) "
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
@@ -12,11 +22,56 @@ truncation_length = 4
 truncate_to_repo = false
 truncation_symbol = "…/"
 
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 100
+truncation_symbol = ""
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "🔖 "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_metrics]
+added_style = "bold blue"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
 [git_status]
-disabled = true
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+up_to_date = "✓"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
+
+[golang]
+format = "via [🏎💨 $version](bold cyan) "
 
 [hostname]
-disabled = true
+ssh_only = false
+format =  "on [$hostname](bold red) "
+trim_at = ".companyname.com"
+disabled = false
+
+[memory_usage]
+disabled = false
+threshold = -1
+symbol = " "
+style = "bold dimmed green"
+
+[nodejs]
+format = "via [🤖 $version](bold green) "
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -24,8 +79,12 @@ disabled = true
 
 [time]
 disabled = false
-time_format = "%Y-%m-%d %H:%M"
-utc_time_offset = "+9"
+format = '🕙[\[ $time \]]($style) '
+time_format = "%c"
 
 [username]
-disabled = true
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
