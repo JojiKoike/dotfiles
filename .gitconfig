@@ -1,0 +1,25 @@
+[user]
+	email = joji.koike@gmail.com
+	name = JojiKoike
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[gui]
+	spellingdictionary = none
+	recentrepo = /Users/george/WorkSpace/study/gittraining/newrepo
+[alias]
+	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
+[core]
+	autocrlf = input
+[filesystem "AdoptOpenJDK|11.0.7|/dev/disk1s1"]
+	timestampResolution = 17000 nanoseconds
+	minRacyThreshold = 0 nanoseconds
+[filesystem "AdoptOpenJDK|11.0.8|/dev/disk1s1"]
+	timestampResolution = 13000 nanoseconds
+	minRacyThreshold = 0 nanoseconds
+[pull]
+	rebase = false
+[commit]
+	template = .commit_template
