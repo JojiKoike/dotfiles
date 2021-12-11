@@ -19,8 +19,14 @@ if [[ $(command -v exa) ]]; then
     alias lta=eta
     alias l='clear && ls'
 fi
+alias vi='vim'
 alias zshconfig='vi ~/.zshrc'
 
+# For Brewfile update
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
+ 
 # For Git, Vim
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
@@ -39,10 +45,5 @@ export PATH=$PATH:$GOPATH/bin
 
 # For Rust
 #export PATH="$HOME/.cargo/bin:$PATH"
-
-# For Brewfile update
-#if [ -f $(brew --prefix)/etc/brew-wrap ];then
-#  source $(brew --prefix)/etc/brew-wrap
-#fi
 
 
