@@ -26,7 +26,7 @@ alias zshconfig='vi ~/.zshrc'
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
- 
+
 # For Git, Vim
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
@@ -39,11 +39,21 @@ export PIPENV_VENV_IN_PROJECT=true
 
 # For GoLang
 # https://github.com/syndbg/goenv/blob/master/CHANGELOG.md#200beta6
-export GOENV_DISABLE_GOPATH=1 
+export GOENV_DISABLE_GOPATH=1
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
 # For Rust
-#export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-
+# ghq -> peco
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src

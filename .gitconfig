@@ -23,3 +23,5 @@
 	rebase = false
 [commit]
 	template = ~/.commit_template
+[ghq]
+	root = ~/WorkSpace
