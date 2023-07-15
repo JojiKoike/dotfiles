@@ -20,7 +20,7 @@ if [[ $(command -v exa) ]]; then
     alias l='clear && ls'
 fi
 alias vi='vim'
-alias zshconfig='vi ~/.zshrc'
+alias zshconf='vi ~/.zshrc'
 
 # For Brewfile update
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
@@ -32,7 +32,8 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
 # For asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+#. /opt/homebrew/opt/asdf/libexec/asdf.sh
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 # For Pipenv
 export PIPENV_VENV_IN_PROJECT=true
@@ -57,3 +58,10 @@ function peco-src () {
 }
 zle -N peco-src
 bindkey '^]' peco-src
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# For Android Studio
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools#
