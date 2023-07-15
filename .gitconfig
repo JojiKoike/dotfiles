@@ -21,7 +21,7 @@
 	minRacyThreshold = 0 nanoseconds
 [pull]
 	rebase = false
-[commit]
-	template = ~/.commit_template
 [ghq]
 	root = ~/WorkSpace
+[init]
+	defaultBranch = main
