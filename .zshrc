@@ -39,10 +39,8 @@ export PATH="/usr/local/bin:$PATH"
 export PIPENV_VENV_IN_PROJECT=true
 
 # For GoLang
-# https://github.com/syndbg/goenv/blob/master/CHANGELOG.md#200beta6
-export GOENV_DISABLE_GOPATH=1
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:PATH
 
 # For Rust
 export PATH="$HOME/.cargo/bin:$PATH"
