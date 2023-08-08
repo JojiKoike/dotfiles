@@ -39,8 +39,8 @@ export PATH="/usr/local/bin:$PATH"
 export PIPENV_VENV_IN_PROJECT=true
 
 # For GoLang
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:PATH
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # For Rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -63,3 +63,9 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools#
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jojikoike/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jojikoike/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jojikoike/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jojikoike/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
