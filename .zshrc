@@ -38,6 +38,10 @@ export PATH="/usr/local/bin:$PATH"
 # For Pipenv
 export PIPENV_VENV_IN_PROJECT=true
 
+# For direnv
+export EDITOR=vi
+eval "$(direnv hook zsh)"
+
 # For GoLang
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -69,3 +73,4 @@ if [ -f '/Users/jojikoike/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/U
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jojikoike/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jojikoike/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
