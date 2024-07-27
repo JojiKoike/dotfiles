@@ -74,3 +74,6 @@ if [ -f '/Users/jojikoike/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/U
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jojikoike/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jojikoike/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+# Created by `pipx` on 2024-06-09 12:55:30
+export PATH="$PATH:/Users/jojikoike/.local/bin"
