@@ -1,6 +1,7 @@
 [user]
 	email = 5671422+JojiKoike@users.noreply.github.com
-	name = JojiKoike
+	name = Joji Koike
+	signingkey = 1899019F1BB3EDAF
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -25,3 +26,5 @@
 	root = ~/WorkSpace
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true
