@@ -1,8 +1,17 @@
 # Starship
 eval "$(starship init zsh)"
 
-# For ssh-agent
-eval "$(ssh-agent)"
+# ssh-agent
+if [ -z "$SSH_AUTH_SOCK" ]; then
+   # Check for a currently running instance of the agent
+   RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
+   if [ "$RUNNING_AGENT" = "0" ]; then
+        # Launch a new instance of the agent
+        ssh-agent -s &> $HOME/.ssh/ssh-agent
+   fi
+   eval `cat $HOME/.ssh/ssh-agent` > /dev/null
+   ssh-add $HOME/.ssh/id_ed25519 2> /dev/null
+fi
 
 # Command Aliases
 if [[ $(command -v eza) ]]; then
@@ -33,18 +42,18 @@ export PATH="/usr/local/bin:$PATH"
 
 # For asdf
 #. /opt/homebrew/opt/asdf/libexec/asdf.sh
-. $(brew --prefix asdf)/libexec/asdf.sh
+#. $(brew --prefix asdf)/libexec/asdf.sh
 
 # For Pipenv
-export PIPENV_VENV_IN_PROJECT=true
+#export PIPENV_VENV_IN_PROJECT=true
 
 # For direnv
-export EDITOR=vi
-eval "$(direnv hook zsh)"
+#export EDITOR=vi
+#eval "$(direnv hook zsh)"
 
 # For GoLang
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+#export GOPATH="$HOME/go"
+#export PATH="$GOPATH/bin:$PATH"
 
 # For Rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -60,6 +69,15 @@ function peco-src () {
 }
 zle -N peco-src
 bindkey '^]' peco-src
+
+
+# ghq with peco (no bindkey)
+function g () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    cd ${selected_dir}
+  fi
+}
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
@@ -77,3 +95,9 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # Created by `pipx` on 2024-06-09 12:55:30
 export PATH="$PATH:/Users/jojikoike/.local/bin"
+source ~/.config/op/plugins.sh
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/jojikoike/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
